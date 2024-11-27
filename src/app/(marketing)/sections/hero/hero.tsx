@@ -5,6 +5,9 @@ import { motion } from "motion/react";
 
 import { MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Container } from "@/components/container";
+import { Spotlight } from "@/components/ui/Spotlight";
+import { Gradient } from "./gradient";
 
 export const Hero = () => {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -25,18 +28,23 @@ export const Hero = () => {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full">
-      <div className="container mx-auto">
+    <div className="w-full bg-neutral-950 relative overflow-hidden">
+      <Gradient />
+      <Container className="relative">
+        <Spotlight
+          className="-top-40 hidden md:block md:left-60 md:-top-20 !opacity-50"
+          fill="white"
+        />
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div>
-            <Button variant="secondary" size="sm" className="gap-4">
+            <Button variant="ghost" size="sm" className="gap-4">
               Let's connect on LinkedIn
               <MoveRight className="w-4 h-4" />
             </Button>
           </div>
           <div className="flex gap-4 flex-col">
-            <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tight text-center font-regular font-cal">
-              <span className="text-spektr-cyan-50">Hello, I'm Joe</span>
+            <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tight text-center font-regular font-cal text-neutral-200">
+              <span className="">Hello, I'm Joe</span>
               <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
                 &nbsp;
                 {titles.map((title, index) => (
@@ -63,13 +71,13 @@ export const Hero = () => {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
+            <p className="text-lg md:text-xl leading-normal tracking-tighter text-neutral-300/80 max-w-2xl text-center">
               I'm a web developer, frontend developer, and UI/UX designer with
               over 10 years of experience. I specialize in building websites and
               web applications that are fast, accessible, and user-friendly.
             </p>
           </div>
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-col md:flex-row gap-3">
             <Button size="lg" className="gap-4" variant="outline">
               Schedule a consultation <PhoneCall className="w-4 h-4" />
             </Button>
@@ -78,7 +86,7 @@ export const Hero = () => {
             </Button>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
