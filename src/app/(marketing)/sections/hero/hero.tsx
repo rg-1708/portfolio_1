@@ -3,11 +3,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
 
-import { MoveRight, PhoneCall } from "lucide-react";
+import { Mail, MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { Gradient } from "./gradient";
+import { SparklesCore } from "@/components/ui/sparkles";
+import { LinkPreview } from "@/components/ui/link-preview";
 
 export const Hero = () => {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -30,18 +32,36 @@ export const Hero = () => {
   return (
     <div className="w-full bg-neutral-950 relative overflow-hidden">
       <Gradient />
-      <Container className="relative">
+      <Container className="relative flex items-center justify-center">
         <Spotlight
           className="-top-40 hidden md:block md:left-60 md:-top-20 !opacity-50"
           fill="white"
         />
+        <SparklesCore
+          background="transparent"
+          minSize={0.3}
+          maxSize={1}
+          particleDensity={10}
+          className="mx-auto w-full h-full absolute  top-0
+        max-w-[380px] sm:max-w-[580px] lg:max-w-[760px]"
+          particleColor="#FEFEFE"
+        />
+
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
-          <div>
-            <Button variant="ghost" size="sm" className="gap-4">
-              Let's connect on LinkedIn
-              <MoveRight className="w-4 h-4" />
-            </Button>
-          </div>
+          <LinkPreview
+            url="https://www.linkedin.com/in/ramil-gojayev-188108206/"
+            className="font-bold"
+          >
+            <div>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-4 text-neutral-300/80"
+              >
+                My Linkedin Profile <MoveRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </LinkPreview>
           <div className="flex gap-4 flex-col">
             <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tight text-center font-regular font-cal text-neutral-200">
               <span className="">Hello, I'm Joe</span>
@@ -79,9 +99,9 @@ export const Hero = () => {
           </div>
           <div className="flex flex-col md:flex-row gap-3">
             <Button size="lg" className="gap-4" variant="outline">
-              Schedule a consultation <PhoneCall className="w-4 h-4" />
+              Let's chat <Mail className="w-4 h-4" />
             </Button>
-            <Button size="lg" className="gap-4">
+            <Button size="lg" variant="sketch" className="gap-4">
               Download resume <MoveRight className="w-4 h-4" />
             </Button>
           </div>

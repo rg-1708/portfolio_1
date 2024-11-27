@@ -1,3 +1,5 @@
+import { Header } from "@/components/navigation/header";
+
 interface MarketingLayoutProps {
   children: React.ReactNode;
 }
@@ -5,6 +7,10 @@ interface MarketingLayoutProps {
 export default async function MarketingLayout({
   children,
 }: MarketingLayoutProps) {
-  return;
-  <main className="flex min-h-screen flex-col relative">{children}</main>;
+  return (
+    <main className="flex min-h-screen flex-col relative">
+      <Header />
+      {children}
+    </main>
+  );
 }
