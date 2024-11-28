@@ -41,17 +41,21 @@ export const Testimonials = () => {
             Here's what people are saying about me
           </h2>
           <Carousel setApi={setApi} className="w-full">
-            <CarouselContent>
+            <CarouselContent className="h-60 md:h-96">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem className="lg:basis-1/2" key={index}>
-                  <div className="bg-muted rounded-md h-full lg:col-span-2 p-6 aspect-video flex justify-between flex-col border-2">
-                    <User className="w-8 h-8 stroke-1" />
+                  <div className="bg-muted rounded-md h-full lg:col-span-2 p-6 aspect-video flex justify-between flex-col border-2 pb-2.5">
+                    <User className="w-8 h-8 stroke-1 shrink-0" />
                     <div className="flex flex-col gap-4">
                       <div className="flex flex-col">
                         <h3 className="text-xl tracking-tight">
                           {testimonial.title}
                         </h3>
-                        <p className="max-w-xs text-base text-muted-foreground">
+                        <p
+                          className="max-w-xs text-base text-muted-foreground 
+                        max-h-24 overflow-ellipsis overflow-hidden line-clamp-4 
+                        md:max-h-none md:overflow-auto md:line-clamp-none"
+                        >
                           {testimonial.content}
                         </p>
                       </div>

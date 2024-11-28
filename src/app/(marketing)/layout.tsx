@@ -1,3 +1,4 @@
+import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
 
 interface MarketingLayoutProps {
@@ -11,6 +12,7 @@ export default async function MarketingLayout({
     <main className="flex min-h-screen flex-col relative">
       <Header />
       {children}
+      <Footer />
     </main>
   );
 }

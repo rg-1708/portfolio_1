@@ -30,7 +30,7 @@ export const Hero = () => {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full bg-neutral-950 relative overflow-hidden">
+    <div className="w-full bg-brand-background relative overflow-hidden">
       <Gradient />
       <Container className="relative flex items-center justify-center">
         <Spotlight
