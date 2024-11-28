@@ -30,7 +30,7 @@ export const Hero = () => {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full bg-brand-background relative overflow-hidden">
+    <div className="relative w-full overflow-hidden bg-brand-background">
       <Gradient />
       <Container className="relative flex items-center justify-center">
         <Spotlight
@@ -47,7 +47,7 @@ export const Hero = () => {
           particleColor="#FEFEFE"
         />
 
-        <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
+        <div className="flex flex-col items-center justify-center gap-8 py-20 lg:py-40">
           <LinkPreview
             url="https://www.linkedin.com/in/ramil-gojayev-188108206/"
             className="font-bold"
@@ -62,10 +62,10 @@ export const Hero = () => {
               </Button>
             </div>
           </LinkPreview>
-          <div className="flex gap-4 flex-col">
-            <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tight text-center font-regular font-cal text-neutral-200">
+          <div className="flex flex-col gap-4">
+            <h1 className="max-w-2xl text-5xl tracking-tight text-center md:text-7xl font-regular font-cal text-neutral-200">
               <span className="">Hello, I'm Joe</span>
-              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
+              <span className="relative flex justify-center w-full overflow-hidden text-center md:pb-4 md:pt-1">
                 &nbsp;
                 {titles.map((title, index) => (
                   <motion.span
@@ -91,13 +91,13 @@ export const Hero = () => {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl leading-normal tracking-tighter text-neutral-300/80 max-w-2xl text-center">
+            <p className="max-w-2xl text-lg leading-normal tracking-tighter text-center md:text-xl text-neutral-300/80">
               I'm a web developer, frontend developer, and UI/UX designer with
               over 10 years of experience. I specialize in building websites and
               web applications that are fast, accessible, and user-friendly.
             </p>
           </div>
-          <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex flex-col gap-3 md:flex-row">
             <Button size="lg" className="gap-4" variant="outline">
               Let's chat <Mail className="w-4 h-4" />
             </Button>

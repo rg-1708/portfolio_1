@@ -12,8 +12,27 @@ import { Container } from "@/components/container";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { testimonials } from "./data";
+import { useScroll, motion, useTransform } from "motion/react";
 
 export const Testimonials = () => {
+  const viewport_threshold = 0.15;
+  const { scrollYProgress } = useScroll();
+  const scroll_y_scale = useTransform(
+    scrollYProgress,
+    [0, viewport_threshold],
+    [0.9, 1]
+  );
+  const scroll_y_opacity = useTransform(
+    scrollYProgress,
+    [0, viewport_threshold],
+    [0.75, 1]
+  );
+  const scroll_y_translate = useTransform(
+    scrollYProgress,
+    [0, viewport_threshold],
+    ["0", "-2rem"]
+  );
+
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
@@ -34,9 +53,15 @@ export const Testimonials = () => {
   }, [api, current]);
 
   return (
-    <div className="w-full py-20 lg:py-40">
+    <motion.div
+      className="w-full py-20 lg:py-40"
+      style={{ translateY: scroll_y_translate }}
+    >
       <Container>
-        <div className="flex flex-col gap-10">
+        <motion.div
+          className="flex flex-col gap-10"
+          style={{ scale: scroll_y_scale, opacity: scroll_y_opacity }}
+        >
           <h2 className="text-3xl font-medium tracking-tighter text-left md:text-5xl lg:max-w-xl font-poppins">
             Here's what people are saying about me
           </h2>
@@ -51,11 +76,7 @@ export const Testimonials = () => {
                         <h3 className="text-xl tracking-tight">
                           {testimonial.title}
                         </h3>
-                        <p
-                          className="max-w-xs text-base text-muted-foreground 
-                        max-h-24 overflow-ellipsis overflow-hidden line-clamp-4 
-                        md:max-h-none md:overflow-auto md:line-clamp-none"
-                        >
+                        <p className="max-w-xs overflow-hidden text-base text-muted-foreground max-h-24 overflow-ellipsis line-clamp-4 md:max-h-none md:overflow-auto md:line-clamp-none">
                           {testimonial.content}
                         </p>
                       </div>
@@ -81,8 +102,8 @@ export const Testimonials = () => {
               ))}
             </CarouselContent>
           </Carousel>
-        </div>
+        </motion.div>
       </Container>
-    </div>
+    </motion.div>
   );
 };
